@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+private:
+    int bookId;
+    float price;
+    int pages;
+
+public:
+   
+    Book(int id = 0, float p = 0.0, int pg = 0) : bookId(id), price(p), pages(pg) {}
+
+    
+    int getBookId() const {
+        return bookId;
+    }
+    void setBookId(int id) {
+        bookId = id;
+    }
+
+    
+    float getPrice() const {
+        return price;
+    }
+    void setPrice(float p) {
+        price = p;
+    }
+
+    
+    int getPages() const {
+        return pages;
+    }
+    void setPages(int pg) {
+        pages = pg;
+    }
+
+    
+    void showBookDetails() const {
+        cout << "Book ID: " << bookId << endl;
+        cout << "Price: $" << price << endl;
+        cout << "Pages: " << pages << endl;
+    }
+};
+
+int main() {
+    
+    Book* book1 = new Book(1, 29.95, 300);
+    Book* book2 = new Book(2, 39.95, 400);
+
+    
+    cout << "Details of Book 1:" << endl;
+    book1->showBookDetails();
+    cout << endl;
+    
+    cout << "Details of Book 2:" << endl;
+    book2->showBookDetails();
+    cout << endl;
+
+
+    if (book1->getPrice() > book2->getPrice()) {
+        cout << "Book 1 is costlier." << endl;
+        cout << "Price of the costlier book: $" << book1->getPrice() << endl;
+    } else if (book2->getPrice() > book1->getPrice()) {
+        cout << "Book 2 is costlier." << endl;
+        cout << "Price of the costlier book: $" << book2->getPrice() << endl;
+    } else {
+        cout << "Both books have the same price." << endl;
+    }
+
+    
+    delete book1;
+    delete book2;
+
+    return 0;
+}
