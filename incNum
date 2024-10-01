@@ -1,0 +1,36 @@
+#include <iostream>
+
+class incNum {
+private:
+    int number;
+
+public:
+    // Constructor
+    incNum(int num) : number(num) {}
+
+    // Friend function to overload the ++ operator
+    friend incNum operator++(incNum& obj); // Pre-increment
+
+    // Function to display the number
+    void display() const {
+        std::cout << "Number: " << number << std::endl;
+    }
+};
+
+// Overloading the ++ operator (pre-increment)
+incNum operator++(incNum& obj) {
+    ++obj.number; // Increment the number
+    return obj;   // Return the incremented object
+}
+
+int main() {
+    incNum num(5); // Create an instance of incNum with initial value 5
+    std::cout << "Before increment: ";
+    num.display(); // Display the initial value
+
+    ++num; // Use the overloaded ++ operator
+    std::cout << "After increment: ";
+    num.display(); // Display the incremented value
+
+    return 0;
+}
