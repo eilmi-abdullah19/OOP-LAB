@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+    char name[30];
+public: 
+    void read() {
+        cout << "Enter Name: ";
+        cin >> name;
+    }
+    void display() {
+        cout << "Name: " << name << endl;
+    }
+};
+
+class Sport : public Person { // Changed 'Public' to 'public'
+    int m;
+public:
+    void display() { // Corrected method name from 'diaplay' to 'display'
+        cout << "Sport value: " << m << endl; // Added a message for clarity
+        Person::display();
+    }
+};
+
+class Student : public Person { // Changed 'Public' to 'public'
+public:
+    void display() {
+        Person::display();
+    }
+};
+
+int main() {
+    Sport sp; 
+    Student st; 
+    sp.read(); 
+    st.read(); // Changed 'St.read()' to 'st.read()'
+    sp.display(); // Changed 'Sp.display()' to 'sp.display()'
+    st.display(); // Changed 'St.display()' to 'st.display()'
+    return 0;
+}
